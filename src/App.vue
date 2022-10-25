@@ -1,16 +1,20 @@
 <template>
   <img alt="Vue logo" src="./assets/images/bg-pentagon.svg" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+
+  <h1>{{ $store.state.counter }}</h1>
+  <h3>{{ $store.getters.withText }}</h3>
+
+  <br />
+  <button @click="$store.commit('increment', 2)">+2</button>
+  <button @click="$store.commit('increment', 1)">+1</button>
+  <button @click="$store.commit('decrement', 1)">-1</button>
+  <button @click="$store.commit('decrement', 2)">-2</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
+  components: {},
 };
 </script>
 
