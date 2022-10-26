@@ -2,20 +2,24 @@
   <div class="content">
     <c-header />
 
-    <my-button>click</my-button>
+    <c-chip />
+  </div>
+  <div class="button-container">
+    <c-button @click="$store.commit('changeGameType')">click</c-button>
   </div>
 </template>
 
 <script>
 import CHeader from '@/components/Header.vue';
-
-import MyButton from '@/components/UI/MyButton.vue';
+import CButton from '@/components/UI/Button.vue';
+import CChip from '@/components/UI/Chip.vue';
 
 export default {
   name: 'App',
   components: {
     CHeader,
-    MyButton,
+    CButton,
+    CChip,
   },
 };
 </script>
@@ -93,5 +97,9 @@ html {
   width: 100%;
   max-width: 800px;
   border: 1px solid black;
+}
+
+.button-container {
+  align-self: flex-end;
 }
 </style>
