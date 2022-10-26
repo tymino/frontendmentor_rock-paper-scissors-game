@@ -1,7 +1,9 @@
 <template>
-  <c-header />
+  <div class="content">
+    <c-header />
 
-  <my-button>click</my-button>
+    <my-button>click</my-button>
+  </div>
 </template>
 
 <script>
@@ -49,13 +51,17 @@ export default {
     hsl(237, 49%, 15%)
   );
 
-  --color-dark-text: hsl(229, 25%, 31%);
-  --score-text: hsl(229, 64%, 46%);
-  --header-outline: hsl(217, 16%, 45%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-text-dark: hsl(229, 25%, 31%);
+  --color-text-score: hsl(229, 64%, 46%);
+  --color-header-outline: hsl(217, 16%, 45%);
 
+  --font-size: 16px;
   --font-family: 'Barlow Semi Condensed', sans-serif;
   --font-weight-normal: 600;
   --font-weight-bold: 700;
+
+  --border-radius: 10px;
 }
 
 * {
@@ -65,7 +71,9 @@ export default {
 }
 
 html {
+  font-size: var(--font-size);
   font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -74,11 +82,16 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  height: 100vh;
+  padding: 40px 20px;
+
+  background: var(--color-radial-gradient);
 }
 
-.cube {
-  width: 100px;
-  height: 100px;
-  background: var(--color-cyan-gradient);
+.content {
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid black;
 }
 </style>

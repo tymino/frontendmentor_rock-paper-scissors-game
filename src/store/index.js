@@ -1,10 +1,5 @@
 import { createStore } from 'vuex';
 
-/*
-gameType: 0 - original,
-          1 - bonus,
-*/
-
 export default createStore({
   state: () => ({
     gameType: ['original', 'bonus'],
@@ -13,7 +8,7 @@ export default createStore({
   }),
   getters: {
     currentGameType(state) {
-      return `currentGameType: ${state.currentGameType}`;
+      return state.currentGameType;
     },
   },
   mutations: {

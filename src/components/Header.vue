@@ -1,10 +1,21 @@
 <template>
   <div class="header">
-    <img class="header__logo" src="../assets/images/logo.svg" alt="logo" />
+    <img
+      class="header__logo header__logo--bonus"
+      v-if="currentGameType === 1"
+      src="../assets/images/logo-bonus.svg"
+      alt="logo"
+    />
+    <img
+      class="header__logo"
+      v-else
+      src="../assets/images/logo.svg"
+      alt="logo"
+    />
 
-    <div class="header__score">
-      <div class="header__score-name">score</div>
-      <div class="header__score-value">{{ $store.state.score }}</div>
+    <div class="header__score score">
+      <div class="score__name">score</div>
+      <div class="score__value">{{ $store.state.score }}</div>
     </div>
   </div>
 </template>
@@ -22,6 +33,36 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  border: 4px solid var(--color-header-outline);
+
+  /* &__logo {
+  } */
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 40px;
+  background: var(--color-white);
+  border-radius: calc(var(--border-radius) - 2px);
+
+  &__name {
+    color: var(--color-text-score);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  &__value {
+    color: var(--color-header-outline);
+    font-size: 3.8rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 3.8rem;
+  }
 }
 </style>
