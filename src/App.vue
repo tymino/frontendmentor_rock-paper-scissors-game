@@ -2,28 +2,48 @@
   <div class="content">
     <Header />
 
-    <BoardBonus v-if="$store.state.currentGameType === 1" />
-    <BoardOriginal v-else />
+    <GameBoard @chipClick="updateStep" />
   </div>
   <div class="button-container">
     <Button @click="$store.commit('changeGameType')">click</Button>
+    <div>{{ this.timer }}</div>
   </div>
 </template>
 
 <script>
 import Button from '@/components/UI/Button.vue';
 
-import BoardBonus from '@/components/BoardBonus.vue';
-import BoardOriginal from '@/components/BoardOriginal.vue';
+import GameBoard from '@/components/GameBoard.vue';
 import Header from '@/components/Header.vue';
 
 export default {
   name: 'App',
   components: {
     Button,
-    BoardBonus,
-    BoardOriginal,
+    GameBoard,
     Header,
+  },
+  data() {
+    return {
+      timer: 10,
+    };
+  },
+  methods: {
+    startTimer() {
+      const interval = setInterval(() => {
+        if (this.timer === 0) {
+          clearInterval(interval);
+        } else {
+          this.timer--;
+        }
+      }, 1000);
+    },
+    updateStep(chipIndex) {
+      console.log('chipIndex', chipIndex);
+    },
+  },
+  mounted() {
+    this.startTimer();
   },
 };
 </script>

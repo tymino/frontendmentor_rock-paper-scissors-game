@@ -8,8 +8,9 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: () => ({
-    currentGameType: 1,
     score: 0,
+    currentGameType: 0,
+    gameTypeNames: ['pentagon', 'triangle'],
     gameChipsName: ['rock', 'scissors', 'paper', 'lizard', 'spock'],
     RulesOfTheGame: [
       { name: 0, weakness: [2, 4] },

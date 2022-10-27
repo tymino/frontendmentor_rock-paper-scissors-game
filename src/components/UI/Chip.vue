@@ -10,6 +10,10 @@
 export default {
   name: 'my-chip',
   props: {
+    chipId: {
+      type: Number,
+      required: true,
+    },
     chipName: {
       type: String,
       default: 'rock',

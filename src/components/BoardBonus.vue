@@ -3,10 +3,12 @@
     <img src="../assets/bg-pentagon.svg" alt="bg-triangle" />
     <Chip
       class="board__chip"
-      v-for="chip in $store.getters.amountGameChips"
+      v-for="(chip, index) in $store.getters.amountGameChips"
       :key="chip"
       :chipName="chip"
+      :chipId="index"
       chipSize="ds"
+      @click="$emit('chip-click', index)"
     />
   </div>
 </template>
