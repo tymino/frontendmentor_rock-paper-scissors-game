@@ -2,7 +2,8 @@
   <div class="content">
     <Header />
 
-    <BoardOriginal />
+    <BoardBonus v-if="$store.state.currentGameType === 1" />
+    <BoardOriginal v-else />
   </div>
   <div class="button-container">
     <Button @click="$store.commit('changeGameType')">click</Button>
@@ -12,15 +13,17 @@
 <script>
 import Button from '@/components/UI/Button.vue';
 
-import Header from '@/components/Header.vue';
+import BoardBonus from '@/components/BoardBonus.vue';
 import BoardOriginal from '@/components/BoardOriginal.vue';
+import Header from '@/components/Header.vue';
 
 export default {
   name: 'App',
   components: {
     Button,
-    Header,
+    BoardBonus,
     BoardOriginal,
+    Header,
   },
 };
 </script>

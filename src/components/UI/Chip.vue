@@ -15,10 +15,15 @@ export default {
       default: 'rock',
       required: true,
     },
+    chipSize: {
+      type: String,
+      default: 'dm',
+      required: true,
+    },
   },
   computed: {
     setClassChip() {
-      return `chip chip__size--md chip--${this.chipName}`;
+      return `chip chip__size--${this.chipSize} chip--${this.chipName}`;
     },
     setIconSrcChip() {
       return `/images/icon-${this.chipName}.svg`;
@@ -28,14 +33,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.chip {
-  --shadow-hover: 0px 0px 40px var(--color-header-outline);
+@mixin shadow($color) {
+  box-shadow: 0px 6px 0px var($color);
 
+  &:hover {
+    box-shadow: 0px 6px 0px var($color),
+      0px 0px 40px var(--color-header-outline);
+  }
+}
+
+.chip {
   border-radius: 50%;
   transition: 0.3s ease;
   cursor: pointer;
 
-  &__size--md {
+  &__size--ds {
+    width: 140px;
+    height: 140px;
+    padding: 16px;
+  }
+  &__size--dm {
     width: 180px;
     height: 180px;
     padding: 20px;
@@ -43,27 +60,23 @@ export default {
 
   &--scissors {
     background: var(--color-scissors-gradient);
-    box-shadow: 0px 6px 0px var(--color-scissors-shadow);
-
-    &:hover {
-      box-shadow: 0px 6px 0px var(--color-scissors-shadow), var(--shadow-hover);
-    }
+    @include shadow(--color-scissors-shadow);
   }
   &--rock {
     background: var(--color-rock-gradient);
-    box-shadow: 0px 6px 0px var(--color-rock-shadow);
-
-    &:hover {
-      box-shadow: 0px 6px 0px var(--color-rock-shadow), var(--shadow-hover);
-    }
+    @include shadow(--color-rock-shadow);
   }
   &--paper {
     background: var(--color-paper-gradient);
-    box-shadow: 0px 6px 0px var(--color-paper-shadow);
-
-    &:hover {
-      box-shadow: 0px 6px 0px var(--color-paper-shadow), var(--shadow-hover);
-    }
+    @include shadow(--color-paper-shadow);
+  }
+  &--lizard {
+    background: var(--color-lizard-gradient);
+    @include shadow(--color-lizard-shadow);
+  }
+  &--spock {
+    background: var(--color-spock-gradient);
+    @include shadow(--color-spock-shadow);
   }
 }
 
