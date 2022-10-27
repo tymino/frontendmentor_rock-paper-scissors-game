@@ -26,24 +26,31 @@ export default {
 .board {
   position: relative;
   margin: 120px;
-  border: 1px solid orange;
 }
 
 .board__chip {
   position: absolute;
+  transform: translate(-50%, -50%);
 
   &:nth-child(2) {
-    top: 0%;
+    top: 2%;
     left: 50%;
-    transform: translate(-50%, -50%);
   }
   &:nth-child(3) {
-    top: -25%;
-    right: -20%;
+    top: 38%;
+    left: 2%;
   }
   &:nth-child(4) {
-    bottom: -20%;
+    top: 38%;
+    right: -38%;
+  }
+  &:nth-child(5) {
     left: 20%;
+    bottom: -40%;
+  }
+  &:nth-child(6) {
+    right: -20%;
+    bottom: -40%;
   }
 }
 </style>

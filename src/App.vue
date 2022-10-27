@@ -56,13 +56,13 @@ export default {
     hsl(261, 73%, 60%),
     hsl(261, 72%, 63%)
   );
-  --color-lizard-shadow: hsl(261, 72%, 63%);
+  --color-lizard-shadow: hsl(261, 72%, 43%);
 
-  --color-cyan-gradient: linear-gradient(
+  --color-spock-gradient: linear-gradient(
     hsl(189, 59%, 53%),
     hsl(189, 58%, 57%)
   );
-  --color-cyan-shadow: hsl(39, 100%, 34%);
+  --color-spock-shadow: hsl(189, 58%, 37%);
 
   --color-radial-gradient: linear-gradient(
     hsl(214, 47%, 23%),
