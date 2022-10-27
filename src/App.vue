@@ -1,25 +1,29 @@
 <template>
   <div class="content">
-    <c-header />
+    <Header />
 
-    <c-chip />
+    <Chip
+      :style="{
+        marginTop: '20px',
+      }"
+    />
   </div>
   <div class="button-container">
-    <c-button @click="$store.commit('changeGameType')">click</c-button>
+    <Button @click="$store.commit('changeGameType')">click</Button>
   </div>
 </template>
 
 <script>
-import CHeader from '@/components/Header.vue';
-import CButton from '@/components/UI/Button.vue';
-import CChip from '@/components/UI/Chip.vue';
+import Header from '@/components/Header.vue';
+import Button from '@/components/UI/Button.vue';
+import Chip from '@/components/UI/Chip.vue';
 
 export default {
   name: 'App',
   components: {
-    CHeader,
-    CButton,
-    CChip,
+    Header,
+    Button,
+    Chip,
   },
 };
 </script>
@@ -31,6 +35,7 @@ export default {
     hsl(39, 89%, 49%),
     hsl(40, 84%, 53%)
   );
+  --color-scissors-shadow: hsl(39, 100%, 34%);
   --color-paper-gradient: linear-gradient(
     to bottom,
     hsl(230, 89%, 62%),
@@ -96,7 +101,7 @@ html {
 .content {
   width: 100%;
   max-width: 800px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .button-container {
