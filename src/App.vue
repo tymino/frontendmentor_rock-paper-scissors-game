@@ -5,8 +5,9 @@
     <GameBoard @chipClick="updateStep" />
   </div>
   <div class="button-container">
-    <Button @click="$store.commit('changeGameType')">click</Button>
-    <div>{{ this.timer }}</div>
+    <Button @click="$store.commit('changeGameType')">switch</Button>
+    <Button @click="$store.commit('changeGameType')">rules</Button>
+    <!-- <div>{{ this.timer }}</div> -->
   </div>
 </template>
 
@@ -43,7 +44,7 @@ export default {
     },
   },
   mounted() {
-    this.startTimer();
+    // this.startTimer();
   },
 };
 </script>
@@ -114,6 +115,7 @@ html {
   font-weight: var(--font-weight-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
 #app {
@@ -122,7 +124,7 @@ html {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 40px;
 
   background: var(--color-radial-gradient);
 }
@@ -138,5 +140,9 @@ html {
 .button-container {
   align-self: flex-end;
   justify-self: flex-end;
+
+  & > button:nth-child(2n) {
+    margin-left: 20px;
+  }
 }
 </style>

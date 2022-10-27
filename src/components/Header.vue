@@ -1,12 +1,12 @@
 <template>
   <div class="header">
     <img
-      class="header__logo header__logo--bonus"
-      v-if="currentGameType === 1"
-      src="../assets/logo-bonus.svg"
+      class="header__logo"
+      :class="currentGameType === 1 && 'header__logo--bonus'"
+      :src="`/images/logo${currentGameType === 1 ? '-bonus' : ''}.svg`"
       alt="logo"
+      draggable="false"
     />
-    <img class="header__logo" v-else src="../assets/logo.svg" alt="logo" />
 
     <div class="header__score score">
       <div class="score__name">score</div>

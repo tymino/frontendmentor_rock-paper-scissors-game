@@ -3,6 +3,7 @@
     <img
       :src="`/images/bg-${setGameTypeIconName}.svg`"
       :alt="`bg-${setGameTypeIconName}`"
+      draggable="false"
     />
     <Chip
       class="board__chip"
@@ -22,7 +23,7 @@ import { mapGetters, mapState } from 'vuex';
 import Chip from '@/components/UI/Chip.vue';
 
 export default {
-  name: 'board-original',
+  name: 'game-board',
   components: {
     Chip,
   },

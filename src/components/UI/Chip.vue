@@ -1,7 +1,12 @@
 <template>
   <div :class="setClassChip">
     <div class="chip__icon-wrapper">
-      <img class="chip__icon" :src="setIconSrcChip" :alt="chipName" />
+      <img
+        class="chip__icon"
+        draggable="false"
+        :src="setIconSrcChip"
+        :alt="chipName"
+      />
     </div>
   </div>
 </template>
