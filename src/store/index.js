@@ -23,6 +23,11 @@ export default createStore({
     currentGameType(state) {
       return state.currentGameType;
     },
+    amountGameChips(state) {
+      return state.currentGameType === 0
+        ? state.gameChipsName.slice(0, 3)
+        : state.gameChipsName;
+    },
   },
   mutations: {
     changeGameType(state) {

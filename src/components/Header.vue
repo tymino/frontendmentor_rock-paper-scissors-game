@@ -36,6 +36,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 20px;
   border-radius: 10px;
   border: 4px solid var(--color-header-outline);

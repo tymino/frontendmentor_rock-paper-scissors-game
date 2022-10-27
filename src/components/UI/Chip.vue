@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'c-chip',
+  name: 'my-chip',
 };
 </script>
 
@@ -21,9 +21,9 @@ export default {
   border-radius: 50%;
 
   &__size--md {
-    width: 140px;
-    height: 140px;
-    padding: 16px;
+    width: 180px;
+    height: 180px;
+    padding: 20px;
   }
 
   &--scissors {

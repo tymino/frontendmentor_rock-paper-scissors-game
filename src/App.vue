@@ -2,11 +2,7 @@
   <div class="content">
     <Header />
 
-    <Chip
-      :style="{
-        marginTop: '20px',
-      }"
-    />
+    <BoardOriginal />
   </div>
   <div class="button-container">
     <Button @click="$store.commit('changeGameType')">click</Button>
@@ -14,16 +10,17 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
 import Button from '@/components/UI/Button.vue';
-import Chip from '@/components/UI/Chip.vue';
+
+import Header from '@/components/Header.vue';
+import BoardOriginal from '@/components/BoardOriginal.vue';
 
 export default {
   name: 'App',
   components: {
-    Header,
     Button,
-    Chip,
+    Header,
+    BoardOriginal,
   },
 };
 </script>
@@ -91,7 +88,6 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   height: 100vh;
   padding: 40px 20px;
 
@@ -99,9 +95,11 @@ html {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 800px;
-  /* border: 1px solid black; */
 }
 
 .button-container {
