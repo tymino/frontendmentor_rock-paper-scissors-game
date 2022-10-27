@@ -3,15 +3,10 @@
     <img
       class="header__logo header__logo--bonus"
       v-if="currentGameType === 1"
-      src="../assets/images/logo-bonus.svg"
+      src="../assets/logo-bonus.svg"
       alt="logo"
     />
-    <img
-      class="header__logo"
-      v-else
-      src="../assets/images/logo.svg"
-      alt="logo"
-    />
+    <img class="header__logo" v-else src="../assets/logo.svg" alt="logo" />
 
     <div class="header__score score">
       <div class="score__name">score</div>

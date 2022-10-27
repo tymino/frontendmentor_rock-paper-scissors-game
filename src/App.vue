@@ -32,25 +32,34 @@ export default {
     hsl(39, 89%, 49%),
     hsl(40, 84%, 53%)
   );
-  --color-scissors-shadow: hsl(39, 100%, 34%);
+  --color-scissors-shadow: hsl(40, 84%, 33%);
+
   --color-paper-gradient: linear-gradient(
     to bottom,
     hsl(230, 89%, 62%),
     hsl(230, 89%, 65%)
   );
+  --color-paper-shadow: hsl(230, 89%, 40%);
+  /* --color-paper-shadow: hsl(230, 73%, 41%); */
+
   --color-rock-gradient: linear-gradient(
     to bottom,
     hsl(349, 71%, 52%),
     hsl(349, 70%, 56%)
   );
+  --color-rock-shadow: hsl(349, 70%, 36%);
+
   --color-lizard-gradient: linear-gradient(
     hsl(261, 73%, 60%),
     hsl(261, 72%, 63%)
   );
+  --color-lizard-shadow: hsl(261, 72%, 63%);
+
   --color-cyan-gradient: linear-gradient(
     hsl(189, 59%, 53%),
     hsl(189, 58%, 57%)
   );
+  --color-cyan-shadow: hsl(39, 100%, 34%);
 
   --color-radial-gradient: linear-gradient(
     hsl(214, 47%, 23%),

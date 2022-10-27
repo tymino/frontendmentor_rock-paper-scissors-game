@@ -1,10 +1,11 @@
 <template>
   <div class="board">
-    <img src="../assets/images/bg-triangle.svg" alt="bg-triangle" />
+    <img src="../assets/bg-triangle.svg" alt="bg-triangle" />
     <Chip
       class="board__chip"
       v-for="chip in $store.getters.amountGameChips"
       :key="chip"
+      :chipName="chip"
     />
   </div>
 </template>
