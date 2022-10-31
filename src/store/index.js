@@ -19,11 +19,10 @@ export default createStore({
       { name: 3, weakness: [0, 1] },
       { name: 4, weakness: [2, 3] },
     ],
+    isRunGame: false,
+    dataOfGameLoop: [],
   }),
   getters: {
-    currentGameType(state) {
-      return state.currentGameType;
-    },
     amountGameChips(state) {
       return state.currentGameType === 0
         ? state.gameChipsName.slice(0, 3)

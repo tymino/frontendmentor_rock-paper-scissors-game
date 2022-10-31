@@ -1,10 +1,10 @@
 <template>
-  <div :class="setClassChip">
+  <div :class="setClassOfChip">
     <div class="chip__icon-wrapper">
       <img
         class="chip__icon"
         draggable="false"
-        :src="setIconSrcChip"
+        :src="setSrcOfChipIcon"
         :alt="chipName"
       />
     </div>
@@ -31,10 +31,10 @@ export default {
     },
   },
   computed: {
-    setClassChip() {
+    setClassOfChip() {
       return `chip chip__size--${this.chipSize} chip--${this.chipName}`;
     },
-    setIconSrcChip() {
+    setSrcOfChipIcon() {
       return `/images/icon-${this.chipName}.svg`;
     },
   },

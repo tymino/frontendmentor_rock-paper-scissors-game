@@ -2,26 +2,35 @@
   <div class="header">
     <img
       class="header__logo"
-      :class="currentGameType === 1 && 'header__logo--bonus'"
-      :src="`/images/logo${currentGameType === 1 ? '-bonus' : ''}.svg`"
+      :class="setClassLogo"
+      :src="setSrcLogo"
       alt="logo"
       draggable="false"
     />
 
     <div class="header__score score">
       <div class="score__name">score</div>
-      <div class="score__value">{{ $store.state.score }}</div>
+      <div class="score__value">{{ score }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'c-header',
   computed: {
-    ...mapGetters(['currentGameType']),
+    ...mapState({
+      score: (state) => state.score,
+      currentGameType: (state) => state.currentGameType,
+    }),
+    setClassLogo() {
+      return this.currentGameType === 1 && 'header__logo--bonus';
+    },
+    setSrcLogo() {
+      return `/images/logo${this.currentGameType === 1 ? '-bonus' : ''}.svg`;
+    },
   },
 };
 </script>
