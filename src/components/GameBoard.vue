@@ -13,7 +13,7 @@
       :chipId="index"
       :chipName="chip"
       :chipSize="currentGameType ? 'ds' : 'dm'"
-      @click="$emit('chip-click', index)"
+      @click="handleClickOfChip(index)"
     />
   </div>
 </template>
@@ -26,6 +26,11 @@ export default {
   name: 'game-board',
   components: {
     Chip,
+  },
+  methods: {
+    handleClickOfChip(chipIndex) {
+      this.$store.dispatch('startCounter', { chipIndex });
+    },
   },
   computed: {
     ...mapState({

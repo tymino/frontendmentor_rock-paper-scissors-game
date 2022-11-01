@@ -20,6 +20,10 @@ export default createStore({
       { name: 4, weakness: [2, 3] },
     ],
     isRunGame: false,
+    delayOfSteps: {
+      enemyStep: 500,
+      result: 300,
+    },
     dataOfGameLoop: [],
   }),
   getters: {
@@ -35,6 +39,21 @@ export default createStore({
         ? (state.currentGameType = 0)
         : (state.currentGameType = 1);
     },
+    chipSelected(state) {
+      state.isRunGame = true;
+    },
   },
-  actions: {},
+  actions: {
+    startCounter({ state }, { chipIndex }) {
+      state.isRunGame = true;
+      console.log('startCounter', chipIndex);
+
+      let timer = setTimeout(() => {
+        console.log('TIMER', timer);
+        clearTimeout(timer);
+      }, 1000);
+
+      state.counter = false;
+    },
+  },
 });
