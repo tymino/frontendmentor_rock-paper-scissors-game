@@ -42,18 +42,28 @@ export default createStore({
     chipSelected(state) {
       state.isRunGame = true;
     },
+    moveOfEnemy(state) {
+      state.dataOfGameLoop.push(2);
+    },
+    startGame(state, chipIndex) {
+      state.isRunGame = true;
+      state.dataOfGameLoop.push(chipIndex);
+    },
+    endGame(state) {
+      state.isRunGame = false;
+    },
   },
   actions: {
-    startCounter({ state }, { chipIndex }) {
-      state.isRunGame = true;
-      console.log('startCounter', chipIndex);
+    startCounter({ state, commit }, { chipIndex }) {
+      commit('startGame', chipIndex);
+
+      console.log('startCounter', state.isRunGame);
 
       let timer = setTimeout(() => {
         console.log('TIMER', timer);
+        commit('moveOfEnemy');
         clearTimeout(timer);
       }, 1000);
-
-      state.counter = false;
     },
   },
 });
