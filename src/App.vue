@@ -4,14 +4,15 @@
     <Modal
       v-if="isVisibleModal"
       :currentGameType="currentGameType"
-      @hide-modal="hideModal"
+      @hide-modal="toggleModal(false)"
     />
 
-    <GameBoard />
+    <GameLoop v-if="isRunGame" />
+    <GameBoard v-else />
   </div>
   <div class="button-container">
     <Button @click="$store.commit('changeGameType')">switch</Button>
-    <Button @click="showModal">rules</Button>
+    <Button @click="toggleModal(true)">rules</Button>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Button from '@/components/UI/Button.vue';
 import Modal from '@/components/UI/Modal.vue';
 
 import GameBoard from '@/components/GameBoard.vue';
+import GameLoop from '@/components/GameLoop.vue';
 import Header from '@/components/Header.vue';
 
 export default {
@@ -30,17 +32,18 @@ export default {
     Button,
     Modal,
     GameBoard,
+    GameLoop,
     Header,
   },
   data() {
     return {
-      isVisibleModal: true,
+      isVisibleModal: false,
       timer: 10,
     };
   },
   methods: {
-    showModal() {
-      this.isVisibleModal = true;
+    toggleModal(isOpen) {
+      this.isVisibleModal = isOpen;
     },
     hideModal() {
       this.isVisibleModal = false;
@@ -50,6 +53,7 @@ export default {
     ...mapState({
       score: (state) => state.score,
       currentGameType: (state) => state.currentGameType,
+      isRunGame: (state) => state.isRunGame,
     }),
   },
 };

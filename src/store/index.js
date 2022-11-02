@@ -32,6 +32,14 @@ export default createStore({
         ? state.gameChipsName.slice(0, 3)
         : state.gameChipsName;
     },
+    getChipsDataInGameLoop(state) {
+      return state.dataOfGameLoop.map((chip) => {
+        return {
+          id: chip,
+          name: state.gameChipsName[chip],
+        };
+      });
+    },
   },
   mutations: {
     changeGameType(state) {

@@ -66,6 +66,11 @@ export default {
     height: 180px;
     padding: 20px;
   }
+  &__size--dl {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+  }
 
   &--scissors {
     background: var(--color-scissors-gradient);
