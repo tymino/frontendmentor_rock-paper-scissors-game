@@ -16,15 +16,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
   name: 'c-header',
+  props: {
+    score: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
+    currentGameType: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
+  },
   computed: {
-    ...mapState({
-      score: (state) => state.score,
-      currentGameType: (state) => state.currentGameType,
-    }),
     setClassLogo() {
       return this.currentGameType === 1 && 'header__logo--bonus';
     },

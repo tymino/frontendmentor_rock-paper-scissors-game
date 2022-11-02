@@ -1,18 +1,22 @@
 <template>
   <div class="content">
-    <Header />
+    <Header :score="score" :currentGameType="currentGameType" />
+    <Modal :currentGameType="currentGameType" @hideModal="hideModal" />
 
-    <GameBoard @chipClick="updateStep" />
+    <GameBoard />
   </div>
   <div class="button-container">
     <Button @click="$store.commit('changeGameType')">switch</Button>
-    <Button @click="$store.commit('changeGameType')">rules</Button>
+    <Button @click="showModal">rules</Button>
     <!-- <div>{{ this.timer }}</div> -->
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import Button from '@/components/UI/Button.vue';
+import Modal from '@/components/UI/Modal.vue';
 
 import GameBoard from '@/components/GameBoard.vue';
 import Header from '@/components/Header.vue';
@@ -21,30 +25,30 @@ export default {
   name: 'App',
   components: {
     Button,
+    Modal,
     GameBoard,
     Header,
   },
   data() {
     return {
+      isVisibleModal: true,
       timer: 10,
     };
   },
   methods: {
-    startTimer() {
-      const interval = setInterval(() => {
-        if (this.timer === 0) {
-          clearInterval(interval);
-        } else {
-          this.timer--;
-        }
-      }, 1000);
+    showModal() {
+      this.isVisibleModal = true;
     },
-    updateStep(chipIndex) {
-      console.log('chipIndex', chipIndex);
+    hideModal() {
+      console.log('hide modal');
+      this.isVisibleModal = false;
     },
   },
-  mounted() {
-    // this.startTimer();
+  computed: {
+    ...mapState({
+      score: (state) => state.score,
+      currentGameType: (state) => state.currentGameType,
+    }),
   },
 };
 </script>
