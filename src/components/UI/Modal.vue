@@ -44,6 +44,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(#000000, 0.4);
   z-index: 10;
 
   &__content {

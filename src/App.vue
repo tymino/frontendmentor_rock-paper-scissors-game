@@ -12,7 +12,6 @@
   <div class="button-container">
     <Button @click="$store.commit('changeGameType')">switch</Button>
     <Button @click="showModal">rules</Button>
-    <!-- <div>{{ this.timer }}</div> -->
   </div>
 </template>
 
@@ -44,7 +43,6 @@ export default {
       this.isVisibleModal = true;
     },
     hideModal() {
-      console.log('hide modal');
       this.isVisibleModal = false;
     },
   },
