@@ -1,7 +1,11 @@
 <template>
   <div class="content">
     <Header :score="score" :currentGameType="currentGameType" />
-    <Modal :currentGameType="currentGameType" @hideModal="hideModal" />
+    <Modal
+      v-if="isVisibleModal"
+      :currentGameType="currentGameType"
+      @hide-modal="hideModal"
+    />
 
     <GameBoard />
   </div>

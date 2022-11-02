@@ -7,10 +7,10 @@
           class="modal__header-close"
           src="/images/icon-close.svg"
           alt="close"
-          @click="$emit('hide:modal')"
+          @click="$emit('hide-modal')"
         />
       </div>
-      <img class="modal__rules" src="/images/image-rules.svg" alt="rules" />
+      <img class="modal__rules" :src="setSrcOfIcon" alt="rules" />
     </div>
   </div>
 </template>
@@ -23,6 +23,12 @@ export default {
       type: Number,
       default: 0,
       required: true,
+    },
+  },
+  computed: {
+    setSrcOfIcon() {
+      const isBonus = this.currentGameType === 1 ? '-bonus' : '';
+      return `/images/image-rules${isBonus}.svg`;
     },
   },
 };
