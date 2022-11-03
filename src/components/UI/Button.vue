@@ -1,5 +1,5 @@
 <template>
-  <button class="button">
+  <button class="button" :class="{ 'button--secondary': isSecondary }">
     <slot></slot>
   </button>
 </template>
@@ -7,6 +7,12 @@
 <script>
 export default {
   name: 'my-button',
+  props: {
+    isSecondary: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
@@ -28,6 +34,24 @@ export default {
 
   &:hover {
     border: 2px solid var(--color-white);
+  }
+}
+
+.button {
+  &--secondary {
+    color: var(--color-text-dark);
+    background: var(--color-white);
+    border: 2px solid var(--color-white);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+
+    &:hover {
+      color: red;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
   }
 }
 </style>

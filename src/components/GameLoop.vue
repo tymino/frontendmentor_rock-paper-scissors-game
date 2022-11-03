@@ -12,7 +12,7 @@
 
     <div class="loop__game-info" v-if="hasWinner">
       <div class="loop__game-info-status">{{ getWinner }}</div>
-      <Button class="loop__game-info-button" @click="resetGame"
+      <Button class="loop__game-info-button" isSecondary @click="resetGame"
         >play again</Button
       >
     </div>
@@ -94,9 +94,10 @@ export default {
 .loop__game-info {
   display: flex;
   flex-direction: column;
-  /* margin: 0 40px; */
+  align-items: center;
 
   &-status {
+    margin-bottom: 20px;
   }
   &-button {
   }
