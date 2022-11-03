@@ -10,7 +10,7 @@
       />
     </div>
 
-    <div class="loop__game-info" v-if="hasWinner">
+    <div class="loop__game-info" v-if="hasWinner >= 0">
       <div class="loop__game-info-status">{{ getWinner }}</div>
       <Button class="loop__game-info-button" isSecondary @click="resetGame"
         >play again</Button

@@ -21,7 +21,7 @@ export default createStore({
       { name: 4, weakness: [2, 3] },
     ],
     isRunGame: false,
-    hasWinner: false,
+    hasWinner: -1,
     delayOfSteps: {
       enemyStep: 500,
       result: 750,
@@ -43,23 +43,7 @@ export default createStore({
       });
     },
     getWinner(state) {
-      if (state.isRunGame && state.dataOfGameLoop.length === 2) {
-        const player = state.dataOfGameLoop[0];
-        const bot = state.dataOfGameLoop[1];
-
-        const weaknessOfPlayer = state.rulesOfTheGame[player].weakness;
-        const weaknessOfBot = state.rulesOfTheGame[bot].weakness;
-
-        if (weaknessOfPlayer.includes(bot)) {
-          return state.namesOfGameResults[0];
-        } else if (weaknessOfBot.includes(player)) {
-          return state.namesOfGameResults[1];
-        } else {
-          return state.namesOfGameResults[2];
-        }
-      }
-
-      return '';
+      return state.namesOfGameResults[state.hasWinner];
     },
   },
   mutations: {
@@ -84,11 +68,27 @@ export default createStore({
       state.dataOfGameLoop.push(chipIndex);
     },
     endGame(state) {
-      state.hasWinner = true;
+      const player = state.dataOfGameLoop[0];
+      const bot = state.dataOfGameLoop[1];
+
+      const weaknessOfPlayer = state.rulesOfTheGame[player].weakness;
+      const weaknessOfBot = state.rulesOfTheGame[bot].weakness;
+
+      if (weaknessOfPlayer.includes(bot)) {
+        state.score -= 3;
+        if (state.score < 0) state.score = 0;
+
+        state.hasWinner = 0;
+      } else if (weaknessOfBot.includes(player)) {
+        state.score += 3;
+        state.hasWinner = 1;
+      } else {
+        state.hasWinner = 2;
+      }
     },
     resetGame(state) {
       state.isRunGame = false;
-      state.hasWinner = false;
+      state.hasWinner = -1;
       state.dataOfGameLoop = [];
     },
   },
