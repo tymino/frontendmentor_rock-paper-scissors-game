@@ -76,7 +76,6 @@ export default {
     hsl(230, 89%, 65%)
   );
   --color-paper-shadow: hsl(230, 89%, 40%);
-  /* --color-paper-shadow: hsl(230, 73%, 41%); */
 
   --color-rock-gradient: linear-gradient(
     to bottom,

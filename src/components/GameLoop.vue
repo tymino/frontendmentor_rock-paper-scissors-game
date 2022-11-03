@@ -7,6 +7,7 @@
         :chipId="getChipsDataInGameLoop[0].id"
         :chipName="getChipsDataInGameLoop[0].name"
         chipSize="dl"
+        isDisableHover
       />
     </div>
 
@@ -26,6 +27,7 @@
         :chipId="getChipsDataInGameLoop[1].id"
         :chipName="getChipsDataInGameLoop[1].name"
         chipSize="dl"
+        isDisableHover
       />
     </div>
   </div>
@@ -59,7 +61,6 @@ export default {
 <style lang="scss" scoped>
 .loop {
   display: flex;
-  /* align-items: center; */
   margin-top: 50px;
 }
 

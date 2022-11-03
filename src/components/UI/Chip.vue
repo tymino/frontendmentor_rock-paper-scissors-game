@@ -29,10 +29,16 @@ export default {
       default: 'dm',
       required: true,
     },
+    isDisableHover: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     setClassOfChip() {
-      return `chip chip__size--${this.chipSize} chip--${this.chipName}`;
+      return `chip chip__size--${this.chipSize} chip--${this.chipName} ${
+        this.isDisableHover ? 'chip__hover-off' : ''
+      }`;
     },
     setSrcOfChipIcon() {
       return `/images/icon-${this.chipName}.svg`;
@@ -45,16 +51,16 @@ export default {
 @mixin shadow($color) {
   box-shadow: 0px 6px 0px var($color);
 
-  &:hover {
+  &:hover:not(.chip__hover-off) {
     box-shadow: 0px 6px 0px var($color),
       0px 0px 40px var(--color-header-outline);
+    cursor: pointer;
   }
 }
 
 .chip {
   border-radius: 50%;
   transition: 0.3s ease;
-  cursor: pointer;
 
   &__size--ds {
     width: 140px;
