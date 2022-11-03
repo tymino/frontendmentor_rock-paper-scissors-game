@@ -11,7 +11,9 @@
     <GameBoard v-else />
   </div>
   <div class="button-container">
-    <Button @click="$store.commit('changeGameType')">switch</Button>
+    <Button v-if="!isRunGame" @click="$store.commit('changeGameType')"
+      >switch</Button
+    >
     <Button @click="toggleModal(true)">rules</Button>
   </div>
 </template>
@@ -52,8 +54,8 @@ export default {
   computed: {
     ...mapState({
       score: (state) => state.score,
-      currentGameType: (state) => state.currentGameType,
       isRunGame: (state) => state.isRunGame,
+      currentGameType: (state) => state.currentGameType,
     }),
   },
 };

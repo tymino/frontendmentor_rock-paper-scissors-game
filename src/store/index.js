@@ -12,7 +12,7 @@ export default createStore({
     currentGameType: 0,
     gameTypeNames: ['pentagon', 'triangle'],
     gameChipsName: ['rock', 'scissors', 'paper', 'lizard', 'spock'],
-    RulesOfTheGame: [
+    rulesOfTheGame: [
       { name: 0, weakness: [2, 4] },
       { name: 1, weakness: [4, 0] },
       { name: 2, weakness: [1, 3] },
@@ -20,11 +20,13 @@ export default createStore({
       { name: 4, weakness: [2, 3] },
     ],
     isRunGame: false,
+    hasWinner: false,
     delayOfSteps: {
       enemyStep: 500,
       result: 300,
     },
     dataOfGameLoop: [],
+    statusGameNames: ['you lose', 'you win', 'draw'],
   }),
   getters: {
     amountGameChips(state) {
@@ -40,6 +42,25 @@ export default createStore({
         };
       });
     },
+    getWinner(state) {
+      if (state.isRunGame && state.dataOfGameLoop.length === 2) {
+        const player = state.dataOfGameLoop[0];
+        const bot = state.dataOfGameLoop[1];
+
+        const weaknessOfPlayer = state.rulesOfTheGame[player].weakness;
+        const weaknessOfBot = state.rulesOfTheGame[bot].weakness;
+
+        if (weaknessOfPlayer.includes(bot)) {
+          return state.statusGameNames[0];
+        } else if (weaknessOfBot.includes(player)) {
+          return state.statusGameNames[1];
+        } else {
+          return state.statusGameNames[2];
+        }
+      }
+
+      return '';
+    },
   },
   mutations: {
     changeGameType(state) {
@@ -51,26 +72,38 @@ export default createStore({
       state.isRunGame = true;
     },
     moveOfEnemy(state) {
-      state.dataOfGameLoop.push(2);
+      const curentAmountChips =
+        state.currentGameType === 0
+          ? state.gameChipsName.slice(0, 3).length
+          : state.gameChipsName.length;
+
+      const botSelection = Math.floor(Math.random() * curentAmountChips);
+      state.dataOfGameLoop.push(botSelection);
     },
     startGame(state, chipIndex) {
       state.isRunGame = true;
       state.dataOfGameLoop.push(chipIndex);
     },
     endGame(state) {
+      state.hasWinner = true;
+    },
+    resetGame(state) {
       state.isRunGame = false;
+      state.hasWinner = false;
+      state.dataOfGameLoop = [];
     },
   },
   actions: {
-    startCounter({ state, commit }, { chipIndex }) {
+    startCounter({ commit }, { chipIndex }) {
       commit('startGame', chipIndex);
 
-      console.log('startCounter', state.isRunGame);
-
       let timer = setTimeout(() => {
-        console.log('TIMER', timer);
         commit('moveOfEnemy');
-        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+          commit('endGame');
+          clearTimeout(timer);
+        }, 1000);
       }, 1000);
     },
   },

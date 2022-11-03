@@ -23,7 +23,7 @@ export default {
   letter-spacing: 2px;
   text-transform: uppercase;
 
-  transition: 0.3s ease-in;
+  transition: border 0.3s ease-in;
   cursor: pointer;
 
   &:hover {
