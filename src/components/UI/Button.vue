@@ -45,12 +45,10 @@ export default {
     font-size: 0.9rem;
     font-weight: var(--font-weight-bold);
 
+    transition: color 0.3s ease-in;
+
     &:hover {
       color: red;
-    }
-
-    &:active {
-      transform: translateY(2px);
     }
   }
 }

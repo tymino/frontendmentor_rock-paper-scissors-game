@@ -59,8 +59,8 @@ export default {
 <style lang="scss" scoped>
 .loop {
   display: flex;
-  align-items: center;
-  margin-top: 40px;
+  /* align-items: center; */
+  margin-top: 50px;
 }
 
 .loop__container {
@@ -76,12 +76,16 @@ export default {
   }
 
   &-title {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+
+    color: var(--color-white);
+    font-size: 1.4rem;
     text-transform: uppercase;
   }
   &-empty {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
+    margin: 20px;
     background: var(--color-text-dark);
     border-radius: 50%;
   }
@@ -94,12 +98,17 @@ export default {
 .loop__game-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: center;
 
   &-status {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
+
+    color: var(--color-white);
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    text-align: center;
   }
-  &-button {
-  }
+  /* &-button {
+  } */
 }
 </style>
