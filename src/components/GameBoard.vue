@@ -1,13 +1,13 @@
 <template>
   <div class="board">
     <img
-      :src="`/images/bg-${setCurrentGameTypeName}.svg`"
-      :alt="`bg-${setCurrentGameTypeName}`"
+      :src="`/images/bg-${setNameOfTheCurrentGameType}.svg`"
+      :alt="`bg-${setNameOfTheCurrentGameType}`"
       draggable="false"
     />
     <Chip
       class="board__chip"
-      :class="`board__chip--${setCurrentGameTypeName}`"
+      :class="`board__chip--${setNameOfTheCurrentGameType}`"
       v-for="(chip, index) in amountGameChips"
       :key="chip"
       :chipId="index"
@@ -35,13 +35,13 @@ export default {
   computed: {
     ...mapState({
       currentGameType: (state) => state.currentGameType,
-      gameTypeNames: (state) => state.gameTypeNames,
+      namesOfGameTypes: (state) => state.namesOfGameTypes,
     }),
     ...mapGetters(['amountGameChips']),
-    setCurrentGameTypeName() {
+    setNameOfTheCurrentGameType() {
       return this.currentGameType
-        ? this.gameTypeNames[0]
-        : this.gameTypeNames[1];
+        ? this.namesOfGameTypes[0]
+        : this.namesOfGameTypes[1];
     },
   },
 };

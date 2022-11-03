@@ -10,8 +10,9 @@ export default createStore({
   state: () => ({
     score: 0,
     currentGameType: 0,
-    gameTypeNames: ['pentagon', 'triangle'],
-    gameChipsName: ['rock', 'scissors', 'paper', 'lizard', 'spock'],
+    nameOfTheGameChips: ['rock', 'scissors', 'paper', 'lizard', 'spock'],
+    namesOfGameTypes: ['pentagon', 'triangle'],
+    namesOfGameResults: ['you lose', 'you win', 'draw'],
     rulesOfTheGame: [
       { name: 0, weakness: [2, 4] },
       { name: 1, weakness: [4, 0] },
@@ -23,22 +24,21 @@ export default createStore({
     hasWinner: false,
     delayOfSteps: {
       enemyStep: 500,
-      result: 300,
+      result: 750,
     },
     dataOfGameLoop: [],
-    statusGameNames: ['you lose', 'you win', 'draw'],
   }),
   getters: {
     amountGameChips(state) {
       return state.currentGameType === 0
-        ? state.gameChipsName.slice(0, 3)
-        : state.gameChipsName;
+        ? state.nameOfTheGameChips.slice(0, 3)
+        : state.nameOfTheGameChips;
     },
     getChipsDataInGameLoop(state) {
       return state.dataOfGameLoop.map((chip) => {
         return {
           id: chip,
-          name: state.gameChipsName[chip],
+          name: state.nameOfTheGameChips[chip],
         };
       });
     },
@@ -51,11 +51,11 @@ export default createStore({
         const weaknessOfBot = state.rulesOfTheGame[bot].weakness;
 
         if (weaknessOfPlayer.includes(bot)) {
-          return state.statusGameNames[0];
+          return state.namesOfGameResults[0];
         } else if (weaknessOfBot.includes(player)) {
-          return state.statusGameNames[1];
+          return state.namesOfGameResults[1];
         } else {
-          return state.statusGameNames[2];
+          return state.namesOfGameResults[2];
         }
       }
 
@@ -64,18 +64,17 @@ export default createStore({
   },
   mutations: {
     changeGameType(state) {
+      state.score = 0;
+
       state.currentGameType === 1
         ? (state.currentGameType = 0)
         : (state.currentGameType = 1);
     },
-    chipSelected(state) {
-      state.isRunGame = true;
-    },
     moveOfEnemy(state) {
       const curentAmountChips =
         state.currentGameType === 0
-          ? state.gameChipsName.slice(0, 3).length
-          : state.gameChipsName.length;
+          ? state.nameOfTheGameChips.slice(0, 3).length
+          : state.nameOfTheGameChips.length;
 
       const botSelection = Math.floor(Math.random() * curentAmountChips);
       state.dataOfGameLoop.push(botSelection);
@@ -94,17 +93,19 @@ export default createStore({
     },
   },
   actions: {
-    startCounter({ commit }, { chipIndex }) {
+    startCounter({ state, commit }, { chipIndex }) {
+      const delayEnemyStep = state.delayOfSteps.enemyStep;
+      const delayResult = state.delayOfSteps.result;
+
       commit('startGame', chipIndex);
 
-      let timer = setTimeout(() => {
+      setTimeout(() => {
         commit('moveOfEnemy');
 
-        timer = setTimeout(() => {
+        setTimeout(() => {
           commit('endGame');
-          clearTimeout(timer);
-        }, 1000);
-      }, 1000);
+        }, delayResult);
+      }, delayEnemyStep);
     },
   },
 });
