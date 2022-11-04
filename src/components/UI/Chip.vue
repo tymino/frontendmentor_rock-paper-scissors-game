@@ -1,6 +1,6 @@
 <template>
   <div :class="setClassOfChip">
-    <transition name="fade">
+    <transition name="appear">
       <div class="chip__winner-aura" v-if="isHasWinAura">
         <div class="chip__winner-aura-wave"></div>
         <div class="chip__winner-aura-wave"></div>
@@ -133,13 +133,6 @@ export default {
   opacity: 0.1;
 }
 
-.fade-enter-active {
-  transition: all 0.4s ease-in;
-}
-
-.fade-enter-from {
-  opacity: 0;
-}
 .chip__icon-wrapper {
   display: flex;
   justify-content: center;
@@ -155,5 +148,14 @@ export default {
 .chip__icon {
   width: 100%;
   height: auto;
+}
+
+.appear {
+  &-enter-active {
+    transition: all 0.4s ease-in;
+  }
+  &-enter-from {
+    opacity: 0;
+  }
 }
 </style>
