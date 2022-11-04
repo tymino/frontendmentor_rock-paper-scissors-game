@@ -8,6 +8,7 @@
         :chipName="getChipsDataInGameLoop[0].name"
         chipSize="dl"
         isDisableHover
+        :isHasWinAura="hasWinner === 1"
       />
     </div>
 
@@ -21,6 +22,7 @@
     <div class="loop__container">
       <div class="loop__container-title">the house picked</div>
       <div class="loop__container-empty" v-if="dataOfGameLoop.length < 2"></div>
+
       <Chip
         class="loop__container-chip"
         v-else
@@ -28,6 +30,7 @@
         :chipName="getChipsDataInGameLoop[1].name"
         chipSize="dl"
         isDisableHover
+        :isHasWinAura="hasWinner === 0"
       />
     </div>
   </div>
@@ -65,6 +68,7 @@ export default {
 }
 
 .loop__container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,7 +113,8 @@ export default {
     text-transform: uppercase;
     text-align: center;
   }
-  /* &-button {
-  } */
+  &-button {
+    z-index: 1;
+  }
 }
 </style>
