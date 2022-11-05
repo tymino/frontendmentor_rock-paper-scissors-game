@@ -158,4 +158,24 @@ export default {
     opacity: 0;
   }
 }
+
+@media (max-width: 675px) {
+  .chip {
+    &__size--sm {
+      width: 140px;
+      height: 140px;
+      padding: 16px;
+    }
+    &__size--md {
+      width: 120px;
+      height: 120px;
+      padding: 14px;
+    }
+    &__size--lg {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+    }
+  }
+}
 </style>

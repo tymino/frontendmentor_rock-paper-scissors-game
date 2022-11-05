@@ -50,9 +50,6 @@ export default {
   padding: 20px;
   border-radius: 10px;
   border: 4px solid var(--color-header-outline);
-
-  /* &__logo {
-  } */
 }
 
 .score {
