@@ -33,7 +33,7 @@ export default {
     },
     chipSize: {
       type: String,
-      default: 'dm',
+      default: 'sm',
       required: true,
     },
     isDisableHover: {
@@ -74,17 +74,17 @@ export default {
   border-radius: 50%;
   transition: 0.3s ease;
 
-  &__size--ds {
+  &__size--sm {
     width: 140px;
     height: 140px;
     padding: 16px;
   }
-  &__size--dm {
+  &__size--md {
     width: 180px;
     height: 180px;
     padding: 20px;
   }
-  &__size--dl {
+  &__size--lg {
     width: 200px;
     height: 200px;
     padding: 20px;

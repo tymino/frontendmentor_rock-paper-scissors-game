@@ -12,7 +12,7 @@
       :key="chip"
       :chipId="index"
       :chipName="chip"
-      :chipSize="currentGameType ? 'ds' : 'dm'"
+      :chipSize="currentGameType ? 'sm' : 'md'"
       @click="handleClickOfChip(index)"
     />
   </div>

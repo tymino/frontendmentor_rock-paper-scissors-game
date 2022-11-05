@@ -6,7 +6,7 @@
         class="loop__container-chip"
         :chipId="getChipsDataInGameLoop[0].id"
         :chipName="getChipsDataInGameLoop[0].name"
-        chipSize="dl"
+        chipSize="lg"
         isDisableHover
         :isHasWinAura="hasWinner === 1"
       />
@@ -28,7 +28,7 @@
         v-else
         :chipId="getChipsDataInGameLoop[1].id"
         :chipName="getChipsDataInGameLoop[1].name"
-        chipSize="dl"
+        chipSize="lg"
         isDisableHover
         :isHasWinAura="hasWinner === 0"
       />
