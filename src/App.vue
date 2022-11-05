@@ -1,10 +1,10 @@
 <template>
   <div class="content">
     <Header :score="score" :currentGameType="currentGameType" />
-    <Modal
-      v-if="isVisibleModal"
+    <Rules
+      v-if="isVisibleRules"
       :currentGameType="currentGameType"
-      @hide-modal="toggleModal(false)"
+      @hide-rules="toggleRules(false)"
     />
 
     <GameLoop v-if="isRunGame" />
@@ -14,7 +14,7 @@
     <Button v-if="!isRunGame" @click="$store.commit('changeGameType')"
       >switch</Button
     >
-    <Button @click="toggleModal(true)">rules</Button>
+    <Button @click="toggleRules(true)">rules</Button>
   </div>
 </template>
 
@@ -22,7 +22,7 @@
 import { mapState } from 'vuex';
 
 import Button from '@/components/UI/Button.vue';
-import Modal from '@/components/UI/Modal.vue';
+import Rules from '@/components/UI/Rules.vue';
 
 import GameBoard from '@/components/GameBoard.vue';
 import GameLoop from '@/components/GameLoop.vue';
@@ -32,23 +32,23 @@ export default {
   name: 'App',
   components: {
     Button,
-    Modal,
+    Rules,
     GameBoard,
     GameLoop,
     Header,
   },
   data() {
     return {
-      isVisibleModal: false,
+      isVisibleRules: true,
       timer: 10,
     };
   },
   methods: {
-    toggleModal(isOpen) {
-      this.isVisibleModal = isOpen;
+    toggleRules(isOpen) {
+      this.isVisibleRules = isOpen;
     },
-    hideModal() {
-      this.isVisibleModal = false;
+    hideRules() {
+      this.isVisibleRules = false;
     },
   },
   computed: {
@@ -150,10 +150,15 @@ html {
 
 .button-container {
   align-self: flex-end;
-  justify-self: flex-end;
 
   & > button:nth-child(2n) {
     margin-left: 20px;
+  }
+}
+
+@media (max-width: 675px) {
+  .button-container {
+    align-self: center;
   }
 }
 </style>
