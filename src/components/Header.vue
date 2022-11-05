@@ -76,4 +76,26 @@ export default {
     line-height: 3.8rem;
   }
 }
+
+@media (max-width: 675px) {
+  .header {
+    padding: 14px;
+
+    &__logo {
+      width: 110px;
+    }
+  }
+
+  .score {
+    padding: 8px 24px;
+
+    &__name {
+      font-size: 1rem;
+    }
+    &__value {
+      font-size: 3.3rem;
+      line-height: 3.3rem;
+    }
+  }
+}
 </style>

@@ -39,8 +39,7 @@ export default {
   },
   data() {
     return {
-      isVisibleRules: true,
-      timer: 10,
+      isVisibleRules: false,
     };
   },
   methods: {
