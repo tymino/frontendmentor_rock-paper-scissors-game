@@ -172,10 +172,31 @@ export default {
       padding: 14px;
     }
     &__size--lg {
-      width: 200px;
-      height: 200px;
-      padding: 20px;
+      width: 130px;
+      height: 130px;
+      padding: 14px;
     }
+  }
+
+  .chip__winner-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    padding: 40px;
+    background: var(--color-white);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      closest-side,
+      var(--color-white) 20%,
+      var(--color-header-outline) 60%,
+      var(--color-white) 85%,
+      var(--color-header-outline) 85%,
+      var(--color-white) 100%
+    );
+    opacity: 0.1;
   }
 }
 </style>

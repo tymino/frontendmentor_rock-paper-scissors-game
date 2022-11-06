@@ -63,20 +63,24 @@ export default {
 
 <style lang="scss" scoped>
 .loop {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(1, auto);
   margin-top: 50px;
 }
 
 .loop__container {
-  position: relative;
+  grid-row: 1 / 2;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   &:first-child {
+    grid-column: 1 / 2;
     margin-right: 40px;
   }
   &:last-child {
+    grid-column: 3 / 4;
     margin-left: 40px;
   }
 
@@ -101,6 +105,8 @@ export default {
 }
 
 .loop__game-info {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -115,6 +121,48 @@ export default {
   }
   &-button {
     z-index: 1;
+  }
+}
+
+@media (max-width: 675px) {
+  .loop {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    margin-top: 40px;
+  }
+
+  .loop__container {
+    grid-row: 1 / 2;
+    flex-direction: column-reverse;
+
+    &:first-child {
+      grid-column: 1 / 2;
+      margin-right: 22px;
+    }
+    &:last-child {
+      grid-column: 2 / 3;
+      margin-left: 22px;
+    }
+
+    &-title {
+      margin-bottom: 0px;
+      font-size: 1rem;
+    }
+    &-empty {
+      width: 110px;
+      height: 110px;
+      margin: 10px 10px 40px 10px;
+    }
+    &-chip {
+      margin-bottom: 30px;
+    }
+  }
+
+  .loop__game-info {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    align-items: center;
+    margin-top: 30px;
   }
 }
 </style>
