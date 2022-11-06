@@ -162,9 +162,9 @@ export default {
 @media (max-width: 675px) {
   .chip {
     &__size--sm {
-      width: 140px;
-      height: 140px;
-      padding: 16px;
+      width: 90px;
+      height: 90px;
+      padding: 10px;
     }
     &__size--md {
       width: 120px;
