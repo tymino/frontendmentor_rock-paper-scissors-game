@@ -1,4 +1,13 @@
 <template>
+  <div class="attribution">
+    Challenge by
+    <a
+      href="https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH"
+      target="_blank"
+      >Frontend Mentor</a
+    >. Coded by <a href="https://github.com/tymino">tymino</a>.
+  </div>
+
   <div class="content">
     <Header :score="score" :currentGameType="currentGameType" />
     <Rules
@@ -10,6 +19,7 @@
     <GameLoop v-if="isRunGame" />
     <GameBoard v-else />
   </div>
+
   <div class="button-container">
     <Button v-if="!isRunGame" @click="$store.commit('changeGameType')"
       >switch</Button
@@ -129,6 +139,7 @@ html {
 }
 
 #app {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -153,6 +164,18 @@ html {
   & > button:nth-child(2n) {
     margin-left: 20px;
   }
+}
+
+.attribution {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  color: var(--color-header-outline);
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: var(--color-text-score);
 }
 
 @media (max-width: 675px) {
