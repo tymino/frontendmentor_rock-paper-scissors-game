@@ -144,7 +144,7 @@ html {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   padding: 40px 40px;
 
   background: var(--color-radial-gradient);
@@ -160,6 +160,7 @@ html {
 
 .button-container {
   align-self: flex-end;
+  margin-top: 20px;
 
   & > button:nth-child(2n) {
     margin-left: 20px;
