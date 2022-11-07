@@ -95,7 +95,8 @@ export default {
     &-title {
       grid-row: 1 / 2;
       grid-column: 1 / 2;
-      padding-bottom: 60px;
+      padding-top: 60px;
+      padding-bottom: 40px;
       color: var(--color-text-dark);
       font-size: 2rem;
       font-weight: var(--font-weight-bold);
